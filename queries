@@ -1,0 +1,47 @@
+--- Add a new column---
+ALTER TABLE students ADD COLUMN student_email VARCHAR(100);
+alter table students add column student_internship varchar(30);
+
+-- Rename a column ---
+ALTER TABLE students RENAME COLUMN studnet_city TO student_city;
+
+-- Change data type of a column ---
+ALTER TABLE students ALTER COLUMN studnet_phonenumber TYPE VARCHAR(30);
+
+-- Drop a column ---
+ALTER TABLE students DROP COLUMN student_email;
+alter table students drop column student_internship;
+
+-- Rename the table itself ---
+ALTER TABLE students RENAME TO learners;
+-- add a new column ---
+alter table learners add column best_courses varchar(30);
+select * from students;
+
+UPDATE learners SET best_courses = 'PostgreSQL' WHERE student_id = 1;
+UPDATE learners SET best_courses = 'Python'     WHERE student_id = 2;
+
+select * from learners;
+update learners set best_courses = 'aws' where student_id=5;
+update learners set best_courses = 'gcp' where student_id=3;
+update learners set student_name ='mahesh'where student_id=4;
+update learners set student_name ='ganesh'where student_id=3;
+update learners set student_name = 'rakesh' where student_id=5;
+update learners set student_name = 'mukesh' where student_id=2;
+update learners set student_name = 'sateesh' where student_id=1;
+update learners set student_name = 'natesh' where student_id=10;
+update learners set student_name = 'bakesh' where student_id=9;
+update learners set best_courses ='bakesh' where student_id=9;
+update learners set student_name = 'nagesh' where student_id=8;
+update learners set student_name = 'nani' where student_id=7;
+update learners set student_name = 'santhesh' where student_id=6;
+update learners set student_name = 'santhesh' where best_courses='gcp';
+update learners set best_courses='gcp' where student_name='santhesh';
+update learners set best_courses='aws' where student_name='nani';
+update learners set best_courses='gcp' where student_name='nagesh';
+update learners set best_courses='aws' where student_name='natesh';
+update learners set student_id='9' where studnet_phonenumber='91+ 95463782';
+update learners set best_courses='gcp' where student_name='mahesh';
+alter  table  learners rename to students; 
+update learners set studnet_phonenumber= '91+ 9786342121' where student_name='rakesh';
+alter table students rename column student_name to s_name;

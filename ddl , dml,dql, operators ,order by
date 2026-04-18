@@ -1,3 +1,36 @@
+CREATE TABLE employee (
+    emp_id INT,
+    name VARCHAR(50),
+    department VARCHAR(30),
+    salary INT,
+    age INT
+);
+
+/* INSERT INTO employee VALUES */
+
+(1, 'Alice', 'IT', 50000, 25),
+(2, 'Bob', 'HR', 30000, 30),
+(3, 'Charlie', 'Sales', 25000, 28),
+(4, 'David', 'IT', 45000, 35),
+(5, 'Eva', 'Finance', 60000, 40),
+
+(6, 'Frank', 'Sales', 20000, 26),
+(7, 'Grace', 'IT', 55000, 29),
+(8, 'Hank', 'HR', 32000, 31),
+(9, 'Ivy', 'Finance', 70000, 38),
+(10, 'Jack', 'Sales', 27000, 27),
+
+(11, 'Kate', 'IT', 48000, 33),
+(12, 'Leo', 'HR', 35000, 36),
+(13, 'Mia', 'Finance', 65000, 42),
+(14, 'Nina', 'Sales', 22000, 24),
+(15, 'Oscar', 'IT', 52000, 37),
+
+(16, 'Paul', 'HR', 28000, 34),
+(17, 'Quinn', 'Finance', 72000, 41),
+(18, 'Rose', 'Sales', 26000, 23),
+(19, 'Steve', 'IT', 53000, 39),
+(20, 'Tom', 'HR', 31000, 32);
 select * from employee where salary >50000;
 select * from employee where salary <50000;
 select * from employee where salary between 25000 and 50000;

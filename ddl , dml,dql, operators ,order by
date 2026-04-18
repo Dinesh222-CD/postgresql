@@ -1,0 +1,74 @@
+select * from employee where salary >50000;
+select * from employee where salary <50000;
+select * from employee where salary between 25000 and 50000;
+select * from employee where salary between 15000 and 20000;
+select * from employee where salary between 25000 and 30000;
+select * from employee where salary between 30000 and 50000;
+select * from  employee where salary between 50000 and 60000;
+select * from employee where salary>=60000;
+select * from employee where salary <=60000;
+
+/* i want only particular name persons salary*/
+
+SELECT salary 
+FROM employee 
+WHERE name = 'David';
+  
+select age  from employee where name ='hank';
+select age  from employee where emp_id =1;
+SELECT age 
+FROM employee 
+WHERE lower(name) = 'hank';
+
+select age  from employee where lower(name)='bob';
+
+select name,age,salary from employee;
+select name,department, salary from employee;
+
+/* where condition */
+select name,department,salary from employee where department='IT';
+select name,department,salary from employee where department='Sales';
+select name , department , salary from employee where salary>50000;
+select name , department , salary from employee where salary<30000;
+select name , department , salary from employee where salary!=50000; 
+select name , department , salary from employee where department='HR';
+select name , emp_id , salary from employee where department ='IT';
+select name , department , salary from employee where emp_id=1;
+
+/* Logical Operators*/
+select name , department, emp_id from employee where salary>20000 and age>25;
+select name , salary, emp_id from employee where department='HR' and age>30; 
+select * from employee where department!='HR' and salary>50000;
+select * from employee where salary>60000 or age>35;
+select name , salary , department from employee where not age<35;
+SELECT name, department, salary 
+FROM employee
+WHERE department IN ('IT','Finance');
+select salary, department from employee where age in ('25','35');
+select salary, department from employee where name in ('Alice','Bob','David');
+
+select salary , department  from employee where name='Alice'or name='Bob'or name='David';  
+select name , department from employee where salary between 50000 and 70000;
+
+SELECT name, department, salary 
+FROM employee
+WHERE name LIKE 'A%';
+
+SELECT name, department, salary ,age
+FROM employee
+WHERE name LIKE '%a';
+
+select name , salary,department from employee where name like '%e';
+
+select name , age , salary from employee where name like'%n%';
+
+select name , salary, department from employee order by salary Desc;
+select salary , department , age from employee order by salary desc;
+select salary , name , age from employee where department='HR' order by salary Desc;
+select salary , name , age from employee where department='HR' order by age Desc;
+
+
+
+
+
+

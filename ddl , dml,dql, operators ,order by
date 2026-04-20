@@ -100,6 +100,29 @@ select salary , department , age from employee order by salary desc;
 select salary , name , age from employee where department='HR' order by salary Desc;
 select salary , name , age from employee where department='HR' order by age Desc;
 
+select * from employee
+/* substring */
+
+select substring('god is good all the time' from 8 for 4);
+
+/* min and max */
+
+select min(salary) from employee;
+
+select min(salary) from employee where department ='HR';
+
+select max(salary) from employee;
+
+select max(salary) from employee where department='Sales';
+
+select  min(age) from employee;
+
+select max(age)  from employee;
+
+select max(salary) from employee where department = 'Sales' and salary>20000;
+
+select max(salary) from employee where name in('Alice','Bob','Charlie');
+
 
 
 

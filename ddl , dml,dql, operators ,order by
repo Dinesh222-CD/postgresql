@@ -123,6 +123,110 @@ select max(salary) from employee where department = 'Sales' and salary>20000;
 
 select max(salary) from employee where name in('Alice','Bob','Charlie');
 
+----------------------------------------------------------------------------------
+22/04/2026 (practice)
+----------------------------------------------------------------------------------
+select * from employee;
+select * from employee order by name asc ;
+select * from employee order by name desc ;
+select * from employee order by salary asc;
+select * from employee order by department asc;
+select * from employee order by emp_id  asc ,  salary asc; 
+select department ,count(*) from employee  group by department ;
+select count(*) from employee ;
+
+/* Show all employees with salary greater than 30,000 * /
+
+select salary from employee where salary > 30000;
+
+/* Show employees whose salary is between 30,000 and 60,000 */
+ 
+ select salary from employee where salary between 30000 and 60000 ;
+ select salary , name from employee where salary between 30000 and 60000  ;
+ select salary , name , age from employee where name in ('Alice','Bob','Grace');
+ select salary , name , age from employee where name in ('Alice','Bob','Grace') order by name asc, salary asc;
+ select salary , name , age from employee where name in ('Alice','Bob','Grace') order by name desc, salary desc;
+
+select salary, name  from employee where salary between 30000 and 60000 order by name asc , salary asc ;
+
+/* Show employees whose department is 'IT' OR 'HR'  */
+ 
+ select * from employee where department = 'IT' or department = 'HR';
+ 
+ / *  Using IN (best & clean way 👍) */
+
+select name , department from employee where department in ('IT','HR');
+
+select * from employee where department = 'IT' or department = 'HR'order by department asc , salary asc;
+
+/ * --Show employees whose name starts with 'A' */
+
+select * from employee where name like 'A%';
+
+select * from employee where name like 'B%' or name like 'A%'  ;
+
+select * from employee where name like 'B%' or name like 'A%' order by name desc;
+
+/*  --Show employees whose name have letter 'a'  */
+
+select * from employee where name like '%a%';
+
+select * from employee where name like '%a%' order by name asc;
+
+select * from employee where name like '%a%' order by name desc;
+
+select * from employee where name like '%C%' order by name asc;
+
+
+/* Show employees whose salary is NOT equal to 40,000 */
+
+select * from employee where salary != 40000 ;
+
+select * from  employee where salary >= 40000;
+
+select * from employee where salary <= 40000 ;
+
+/* Show employees whose emp_id is in (2, 5, 8) */
+
+select emp_id from employee where emp_id in(2,5,8);
+
+select emp_id from employee where emp_id in(2,5,8);
+
+select emp_id , name, salary  from employee where  department  in ('IT') ;
+
+select emp_id , name , salary from employee where department in ('Sales');
+
+
+/* Show employee id,employee name ,salary ,annual salary and department */
+
+select emp_id , name , salary ,  salary*12 as annual_salary, salary department from employee ; 
+
+select emp_id , name , salary ,  salary*12 as annual_salary, (salary*12)/365 as daily_salary ,min(salary) as minimum_salary, max(salary) as maximum_salary , order by salary desc as rank , salary department from employee; 
+
+
+select emp_id , name , salary , salary/12 as monthly_salary , salary/365 as daily_salary , department from employee;
+
+SELECT * from 
+( 
+     select  
+       emp_id,
+       name,
+       salary as monthly_salary,  
+       (salary*12) as annual_salary, 
+       (salary*12)/365 as daily_salary ,
+       Dense_rank() over(order by(salary*12)/365 desc) as D_rank
+        from employee) as D
+where D_rank=7;
+
+
+
+select emp_id,name,department,salary as monthly_sal,
+       (salary*12) annual_sal,
+       (salary*12)/365 daily_sal,
+       dense_rank()over(order by(salary*12)/365 desc) as D_R
+       from employee;
+
+
 
 
 

@@ -1,0 +1,124 @@
+select * from orders_data ;
+
+---- 1. Second Highest Revenue Category
+
+select category , sum(price*quantity) as total_revenue 
+from orders_data 
+group by category
+order by total_revenue desc limit 1 offset 1;
+
+---- . print Revenue of Electronics in category or “Find the total price of all orders belonging to the 'Electronics' category.”
+---with group by 
+select category , sum(price) as total_price_of_electronics
+from orders_data 
+where category ='Electronics'
+group by category;
+ 
+---without group by 
+select sum(price)  as total_E 
+from orders_data 
+where category ='Electronics';
+
+SELECT SUM(price)
+FROM orders_data;
+
+select category , sum(price) as total 
+from orders_data
+group by category 
+order by total desc
+limit 5 offset 0;
+
+
+SELECT category,
+       SUM(price) AS category_total,
+       SUM(SUM(price)) OVER () AS overall_total
+FROM orders_data
+GROUP BY category
+ORDER BY category_total DESC
+LIMIT 5 OFFSET 0;
+
+--COUNT
+
+select count(*) from  orders_data;
+
+--SUM
+
+select sum(price) from orders_data;
+
+--AVG
+
+select avg(price) from orders_data;
+
+--MAX
+
+select max(price) from orders_data;
+
+select * from orders_data 
+where price>=60000;
+
+--MIN
+
+select min(price) from orders_data;
+
+select * from orders_data 
+where price <=2000;
+
+--Category-wise total revenue
+
+select category , sum(price*quantity) as total_revenue
+from  orders_data 
+group by category;
+
+--Orders count per city
+
+select city , count(*) 
+from orders_data  
+group by  city;
+
+--Avg price per category
+select category , avg(price) as TOTAL_AVG_PRICE 
+from orders_data 
+group by category;
+
+
+select category , sum(price) as total_sum ,avg(price) as total_avg , avg(sum(price))  over() as all_avg 
+from orders_data 
+group by  category ;
+
+
+
+SELECT category,
+       SUM(price * quantity) AS total_sum,
+       AVG(price * quantity) AS category_avg,
+       SUM(SUM(price * quantity)) OVER () AS overall_total,
+       AVG(SUM(price * quantity)) OVER () AS overall_avg
+FROM orders_data
+GROUP BY category
+ORDER BY total_sum DESC;
+
+
+
+
+select category , sum(price*quantity) as total_revenue , avg(total_revenue) as total_avg, sum(sum(total_revenue)) over () as overal_sum
+from orders_data 
+group by category  order by overal_sum;
+
+
+
+SELECT category, 
+       SUM(price * quantity) AS total_revenue, 
+       AVG(price * quantity) AS category_avg,
+       AVG(SUM(price * quantity)) OVER () AS total_avg,
+       SUM(SUM(price * quantity)) OVER () AS overall_sum
+FROM orders_data 
+GROUP BY category  
+ORDER BY overall_sum DESC;
+
+               --or 
+
+select category , sum(price*quantity) as total_revenue , avg(price*quantity) as category_avg, 
+       sum(sum(price*quantity)) over() as total_sum,
+       avg(sum(price*quantity)) over() as total_avg 
+       from orders_data
+       group by category
+       order by total_revenue ;

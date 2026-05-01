@@ -1,0 +1,42 @@
+
+-- create a table 
+CREATE TABLE UserWatchData (
+    RecordID INT PRIMARY KEY,
+    UserName VARCHAR(50),
+    Platform VARCHAR(50),
+    WatchDate DATE,
+    WatchMinutes INT
+);      
+
+-- insert data into table 
+
+INSERT INTO UserWatchData (RecordID, UserName, Platform, WatchDate, WatchMinutes) VALUES
+(8, 'Kabir', 'Prime', '2024-01-02', 120),
+(9, 'Kabir', 'Prime', '2024-01-03', 150),
+(10, 'Sneha', 'Prime', '2024-01-01', 90),
+(11, 'Sneha', 'Prime', '2024-01-02', 130),
+(12, 'Sneha', 'Prime', '2024-01-03', 150),
+(13, 'Aman', 'Hotstar', '2024-01-01', 60),
+(14, 'Aman', 'Hotstar', '2024-01-02', 80),
+(15, 'Aman', 'Hotstar', '2024-01-03', 100),
+(16, 'Neha', 'Hotstar', '2024-01-01', 70),
+(17, 'Neha', 'Hotstar', '2024-01-02', 80),
+(18, 'Neha', 'Hotstar', '2024-01-03', 100);
+
+-- to check the table  details 
+
+select * from userwatchdata ;
+
+--- rankings row_number, rank, dense_rank
+
+SELECT RecordID, UserName, Platform, WatchDate, WatchMinutes,
+  RANK() OVER (ORDER BY WatchMinutes DESC) AS overall_rank
+FROM UserWatchData;
+
+
+select recordid ,username,platform,watchdate,watchminutes, 
+row_number() over(order by watchminutes desc) ,
+rank () over (order by watchminutes desc) ,
+DENSE_RANK() OVER (ORDER BY WatchMinutes DESC) 
+from userwatchdata ;
+
